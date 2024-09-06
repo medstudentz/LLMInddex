@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lipid-Laden Macrophage Index Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Lipid-Laden Macrophage Index (LLMI) Calculator</h2>
+        <form id="llmi-form">
+            <label for="numFields">Number of Fields Counted:</label>
+            <input type="number" id="numFields" placeholder="Enter number of fields" required>
+
+            <label for="lipidDroplets">Total Lipid Droplets:</label>
+            <input type="number" id="lipidDroplets" placeholder="Enter total lipid droplets" required>
+
+            <label for="macrophages">Total Macrophages Counted:</label>
+            <input type="number" id="macrophages" placeholder="Enter total macrophages" required>
+
+            <button type="button" onclick="calculateLLMI()">Calculate LLMI</button>
+        </form>
+
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function calculateLLMI() {
+            const numFields = document.getElementById('numFields').value;
+            const lipidDroplets = document.getElementById('lipidDroplets').value;
+            const macrophages = document.getElementById('macrophages').value;
+
+            if(numFields && lipidDroplets && macrophages) {
+                const LLMI = (lipidDroplets / macrophages) * 100;
+                document.getElementById('result').innerText = `Lipid-Laden Macrophage Index: ${LLMI.toFixed(2)}`;
+            } else {
+                document.getElementById('result').innerText = 'Please fill in all fields.';
+            }
+        }
+    </script>
+</body>
+</html>
